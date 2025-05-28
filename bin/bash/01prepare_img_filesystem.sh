@@ -46,7 +46,7 @@ sync
 
 # 5. Create mountpoints
 echo "Creating mountpoints..."
-mkdir -p "$MOUNT_POINT" "$EXT4_MOUNT" "$FAT_MOUNT"
+mkdir -p "$EXT4_MOUNT" "$FAT_MOUNT"
 
 # 6. Mount partitions
 echo "Mounting partitions..."

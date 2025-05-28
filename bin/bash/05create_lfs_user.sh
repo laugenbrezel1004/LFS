@@ -21,9 +21,9 @@ if ! id "lfs" > /dev/null 2>&1; then
   passwd lfs
 fi
 #Grant lfs full access to all the directories under $LFS by making lfs the owner:
-chown -v lfs "${EXT4_MOUNT}"/{usr{,/*},var,etc,tools}
+chown -v lfs "${LFS}"/{usr{,/*},var,etc,tools}
 case $(uname -m) in
-  x86_64) chown -v lfs "${EXT4_MOUNT}"/lib64 ;;
+  x86_64) chown -v lfs "${LFS}"/lib64 ;;
 esac
 
-mkdir -pv "${EXT4_MOUNT}"/{etc,var} "${EXT4_MOUNT}"/usr/{bin,lib,sbin}
+mkdir -pv "${LFS}"/{etc,var} "${LFS}"/usr/{bin,lib,sbin}

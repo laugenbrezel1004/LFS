@@ -13,7 +13,7 @@ cd .. && cd .. && pwd
 __check_if_root
 
 
-mkdir "${EXT4_MOUNT}"/sources
+mkdir "${LFS}"/sources
 
 wget --input-file=- --continue --directory-prefix="$EXT4_MOUNT"/sources <<HERE
 https://download.savannah.gnu.org/releases/acl/acl-2.3.2.tar.xz

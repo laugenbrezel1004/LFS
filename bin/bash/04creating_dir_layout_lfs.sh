@@ -12,14 +12,14 @@ cd .. && cd .. && pwd
 # check if root started this
 __check_if_root
 
-mkdir -pv "${EXT4_MOUNT}"/{etc,var} "${EXT4_MOUNT}"/usr/{bin,lib,sbin}
+mkdir -pv "${LFS}"/{etc,var} "${LFS}"/usr/{bin,lib,sbin}
 
 for i in bin lib sbin; do
-  ln -sv "usr/$i" "${EXT4_MOUNT}"/$i
+  ln -sv "usr/$i" "${LFS}"/$i
 done
 
 case $(uname -m) in
-  x86_64) mkdir -pv "${EXT4_MOUNT}"/lib64 ;;
+  x86_64) mkdir -pv "${LFS}"/lib64 ;;
 esac
 
-mkdir -pv "${EXT4_MOUNT}"/tools
+mkdir -pv "${LFS}"/tools
