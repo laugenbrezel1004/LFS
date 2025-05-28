@@ -45,9 +45,11 @@ cleanup() {
 trap 'echo "Error occurred. Cleaning up..."; cleanup; exit 1' ERR
 
 # 1. Create image file
-echo "Creating image file ($SIZE_MB MB)..."
-dd if=/dev/zero of="$IMAGE_FILE" bs=1M count="$SIZE_MB status=progess" 
-sync
+if [ ! -f "${IMAGE_FILE}" ]; then
+  echo "Creating image file ($SIZE_MB MB)..."
+  dd if=/dev/zero of="$IMAGE_FILE" bs=1M count="$SIZE_MB status=progess" 
+  sync
+fi
 
 # 2. Set up loop device
 echo "Setting up loop device..."
@@ -65,7 +67,7 @@ sync
 # 4. Format partitions
 echo "Formatting partitions..."
 mkfs.ext4 "${LOOP_DEV}p1"
-mkfs.vfat "${LOOP_DEV}p2"
+mkfs.vfat -t fat32 "${LOOP_DEV}p2"
 sync
 
 # 5. Create mountpoints
