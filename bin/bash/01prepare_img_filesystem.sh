@@ -6,12 +6,12 @@
 set -e # show error
 set -x # extented debug info
 
-# get to the root of the project
-cd $(dirname "${BASH_SOURCE[0]}")
+# to get to the root
+cd "$(dirname "${BASH_SOURCE[0]}")"
 cd .. && cd .. && pwd
 
 # source some importent functions
-source bin/bash/functions.sh
+. bin/bash/functions.sh
 
 # Check if the script is run as root
 __check_if_root
