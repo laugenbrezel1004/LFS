@@ -21,3 +21,5 @@ done
 case $(uname -m) in
   x86_64) mkdir -pv "${EXT4_MOUNT}"/lib64 ;;
 esac
+
+mkdir -pv "${EXT4_MOUNT}"/tools
