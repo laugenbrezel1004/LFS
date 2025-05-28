@@ -12,7 +12,7 @@ cd .. && cd .. && pwd
 # check if root started this
 __check_if_root
 
-mkdir -pv "${EXT4_MOUNT}/{etc,var}" "${EXT4_MOUNT}/usr/{bin,lib,sbin}"
+mkdir -pv "${EXT4_MOUNT}"/{etc,var} "${EXT4_MOUNT}"/usr/{bin,lib,sbin}
 
 for i in bin lib sbin; do
   ln -sv "usr/$i" "${EXT4_MOUNT}"/$i

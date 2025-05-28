@@ -25,8 +25,8 @@ mkdir -p "$EXT4_MOUNT" "$FAT_MOUNT"
 
 # 3. Mount partitions
 echo "Mounting partitions..."
-mount "${LOOP_DEV}p1" "$EXT4_MOUNT"
-mount "${LOOP_DEV}p2" "$FAT_MOUNT"
+mount "${LOOP_DEV}p1" "$FAT_MOUNT"
+mount "${LOOP_DEV}p2" "$EXT4_MOUNT"
 
 # 5. Change permissions
 #echo "Change permissions"
