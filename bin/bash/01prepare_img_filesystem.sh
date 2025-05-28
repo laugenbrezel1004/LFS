@@ -1,26 +1,24 @@
 #!/bin/sh
-
+######
+# UEFI and ext4 partitions
+#
 
 set -e # show error
 set -x # extented debug info
 
-# Check if the script is run as root
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root (sudo)."
-   exit 1
-fi
-
-# Get the directory where the script is located
+# get to the root of the project
 cd $(dirname "${BASH_SOURCE[0]}")
-# to get to the root
 cd .. && cd .. && pwd
 
+# source some importent functions
+source bin/bash/functions.sh
+
+# Check if the script is run as root
+__check_if_root
+
+
 # Variables
-IMAGE_FILE="lfs.img"
-MOUNT_POINT="/tmp/lfs"
-SIZE_MB=20480  # Size of the image file in MB (20 GB)
-EXT4_MOUNT="/tmp/lfs/ext4"
-FAT_MOUNT="/tmp/lfs/fat"
+
 
 # Function to clean up
 cleanup() {
@@ -41,8 +39,6 @@ cleanup() {
     echo "Cleanup completed."
 }
 
-# Error handling
-trap 'echo "Error occurred. Cleaning up..."; cleanup; exit 1' ERR
 
 # 1. Create image file
 if [ ! -f "${IMAGE_FILE}" ]; then
@@ -67,7 +63,7 @@ sync
 # 4. Format partitions
 echo "Formatting partitions..."
 mkfs.ext4 "${LOOP_DEV}p1"
-mkfs.vfat -t fat32 "${LOOP_DEV}p2"
+mkfs.fat -F 32 "${LOOP_DEV}p2"
 sync
 
 # 5. Create mountpoints
@@ -81,8 +77,8 @@ mount "${LOOP_DEV}p2" "$FAT_MOUNT"
 
 # 7. Check contents
 echo "Contents of mounted partitions:"
-ls -l "$EXT4_MOUNT"
-ls -l "$FAT_MOUNT"
+ls -lah "$EXT4_MOUNT"
+ls -lah "$FAT_MOUNT"
 
 # 8. Short pause to demonstrate mounts
 echo "Partitions are mounted. Waiting 5 seconds..."
