@@ -1,2 +1,3 @@
 tmp/*
 *.img
+lfs/ext4/sources/*

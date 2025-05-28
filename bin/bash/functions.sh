@@ -1,4 +1,7 @@
 
+
+
+
 IMAGE_FILE="lfs.img"
 MOUNT_POINT="/tmp/lfs"
 SIZE_MB=20480  # Size of the image file in MB (20 GB)
