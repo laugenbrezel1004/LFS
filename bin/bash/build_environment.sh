@@ -9,5 +9,6 @@ pwd
 #
 #pwd
 export LFS="$(pwd)"/ext4
+export MAKEFLAGS=-j24
 #export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 #
