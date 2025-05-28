@@ -1,2 +1,4 @@
 tmp/*
 *.img
+lfs/ext4/sources/*
+!lfs/ext4/sources/.gitkeep
