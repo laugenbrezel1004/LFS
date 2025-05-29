@@ -10,7 +10,7 @@ cd .. && cd .. && pwd
 . bin/bash/functions.sh
 
 # check if root started this
-__check_if_root
+#__check_if_root
 
 mkdir -pv "${LFS}"/{etc,var} "${LFS}"/usr/{bin,lib,sbin}
 
