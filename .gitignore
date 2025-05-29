@@ -2,3 +2,4 @@ tmp/*
 *.img
 lfs/ext4/sources/*
 !lfs/ext4/sources/.gitkeep
+lfs/ext4/tools
