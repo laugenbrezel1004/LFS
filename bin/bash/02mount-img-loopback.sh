@@ -6,6 +6,7 @@ set -x # extented debug info
 cd "$(dirname "${BASH_SOURCE[0]}")"
 cd .. && cd .. && pwd
 
+env
 # source some importent functions
 . bin/bash/functions.sh
 
@@ -19,21 +20,15 @@ echo "Setting up loop device..."
 LOOP_DEV=$(losetup -fP --show "$IMAGE_FILE")
 echo "Loop device: $LOOP_DEV"
 
-# 2. Create mountpoints in project directory
-echo "Creating mountpoints in $PROJECT_DIR..."
-mkdir -p "$EXT4_MOUNT" "$FAT_MOUNT"
 
-# 3. Mount partitions
+# 2. Mount partitions
 echo "Mounting partitions..."
-mount "${LOOP_DEV}p1" "$FAT_MOUNT"
-mount "${LOOP_DEV}p2" "$EXT4_MOUNT"
+mount "${LOOP_DEV}p1" "${LFS}/fat"
+mount "${LOOP_DEV}p2" "${LFS}/ext4"
 
-# 5. Change permissions
-#echo "Change permissions"
-#chown -R "1000:1000" "./lfs"
 
-# 6. Check contents
+# 3. Check contents
 echo "Contents of mounted partitions:"
-ls -l "$EXT4_MOUNT"
-ls -l "$FAT_MOUNT"
+ls -l "${LFS}/etx4"
+ls -l "${LFS}/fat"
 

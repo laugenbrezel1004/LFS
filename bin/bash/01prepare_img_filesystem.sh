@@ -7,7 +7,8 @@ set -e # show error
 set -x # extented debug info
 
 # to get to the root
-cd "$(dirname "${BASH_SOURCE[0]}")"
+cd ll
+(dirname "${BASH_SOURCE[0]}")
 cd .. && cd .. && pwd
 
 # source some importent functions

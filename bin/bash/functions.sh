@@ -1,12 +1,15 @@
 
-
+# check if LFS is empty
+# shellcheck disable=SC2236
+if [ -n "${LFS}" ]; then
+  echo "LFS not set abort"
+  exit 1
+fi;
 
 
 export IMAGE_FILE="lfs.img"
 #export MOUNT_POINT="/tmp/lfs"
 export SIZE_MB=20480  # Size of the image file in MB (20 GB)
-export EXT4_MOUNT="${LFS}/ext4"
-export FAT_MOUNT="${LFS}/fat"
 
 __check_if_root() {
   if [[ $EUID -ne 0 ]]; then
